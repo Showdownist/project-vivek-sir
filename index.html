@@ -1,9 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    // Mobile hamburger toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+  
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      document.body.classList.toggle('menu-open');
+      hamburger.innerHTML = navLinks.classList.contains('active')
+        ? '<i class="fas fa-times"></i>'
+        : '<i class="fas fa-bars"></i>';
+    });
+  </script>
+  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Junoon-e-Mausiki | The Musical Hub</title>
+<meta name="description" content="Junoon-e-Mausiqi – The Musical Hub. Learn vocals, tabla, dholak, flute, guitar, keyboard, and more.">
+<link rel="icon" href="logo.png" type="image/png">
+
+<title>Junoon-e-Mausiqi | The Musical Hub</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -19,6 +36,98 @@ body {
   color: white;
   overflow-x: hidden;
   min-height: 100vh;
+}
+/* NAVBAR STYLES */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(10, 22, 40, 0.9);
+  border-bottom: 1px solid rgba(0, 255, 204, 0.2);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  animation: fadeInDown 1s ease;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-size: 1.4em;
+  font-weight: 700;
+  color: #00ffcc;
+  text-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1em;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #00ffcc;
+  text-shadow: 0 0 10px rgba(0, 255, 204, 0.8);
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.8em;
+  color: #00ffcc;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.hamburger:hover {
+  transform: rotate(90deg);
+}
+
+/* MOBILE NAV */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 65px;
+    right: -100%;
+    background: rgba(10, 22, 40, 0.97);
+    width: 200px;
+    height: calc(100vh - 65px);
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding-top: 40px;
+    border-left: 1px solid rgba(0, 255, 204, 0.2);
+    transition: right 0.4s ease;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
 }
 
 /* Floating musical notes animation */
@@ -473,8 +582,25 @@ footer i {
   }
 }
 </style>
+
 </head>
 <body>
+
+  <!-- Navigation Bar -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <i class="fas fa-music"></i> Junoon-e-Mausiqi
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <i class="fas fa-bars"></i>
+    </div>
+  </div>
+</nav>
 
 <!-- Floating musical notes background -->
 <div class="music-bg">
@@ -491,10 +617,10 @@ footer i {
 
 <div class="container">
   <header>
-    <div class="logo-container">
-      <img src="logo.png" alt="Junoon-e-Mausiki Logo" class="logo">
+    <div class="logo-container" style="padding-top: 25px;">
+      <img src="logo.png" alt="Junoon-e-Mausiqi Logo" class="logo" >
     </div>
-    <h1>Junoon-e-Mausiki</h1>
+    <h1>Junoon-e-Mausiqi</h1>
     <h2><i class="fas fa-music"></i> The Musical Hub <i class="fas fa-music"></i></h2>
   </header>
 
@@ -562,16 +688,13 @@ footer i {
         <a href="https://www.facebook.com/vivek.vishaal.1?rdid=9tIA6PtCpLPmzSQP&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16cutE1TDq%2F#" class="social-btn facebook" title="Like us on Facebook">
           <i class="fab fa-facebook"></i>
         </a>
-        <a href="#" class="social-btn youtube" title="Subscribe on YouTube">
-          <i class="fab fa-youtube"></i>
-        </a>
       </div>
     </div>
   </section>
 
   <footer>
     <p>
-      <i class="fas fa-music"></i> © 2025 Junoon-e-Mausiki - Where Passion Meets Melody <i class="fas fa-music"></i>
+      <i class="fas fa-music"></i> © 2025 Junoon-e-Mausiqi - Where Passion Meets Melody <i class="fas fa-music"></i>
     </p>
   </footer>
 </div>

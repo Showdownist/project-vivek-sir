@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Junoon-e-Mausiqi</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Reuse existing styles */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0a1628 0%, #0f2744 50%, #1a3a5c 100%);
+  color: white;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Floating musical notes */
+.music-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+.note { position: absolute; font-size: 24px; opacity: 0; animation: float 15s infinite; color: rgba(0, 255, 204, 0.2); }
+.note:nth-child(1) { left: 10%; animation-delay: 0s; }
+.note:nth-child(2) { left: 20%; animation-delay: 2s; }
+.note:nth-child(3) { left: 30%; animation-delay: 4s; }
+.note:nth-child(4) { left: 40%; animation-delay: 1s; }
+.note:nth-child(5) { left: 50%; animation-delay: 3s; }
+.note:nth-child(6) { left: 60%; animation-delay: 5s; }
+.note:nth-child(7) { left: 70%; animation-delay: 2.5s; }
+.note:nth-child(8) { left: 80%; animation-delay: 4.5s; }
+.note:nth-child(9) { left: 90%; animation-delay: 1.5s; }
+@keyframes float {
+  0% { bottom: -50px; opacity: 0; transform: translateX(0) rotate(0deg); }
+  10%, 90% { opacity: 0.6; }
+  100% { bottom: 100%; opacity: 0; transform: translateX(100px) rotate(360deg); }
+}
+
+.container { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+/* Header */
+header { text-align: center; padding: 40px 20px 20px; animation: fadeInDown 1s ease; }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-50px); } to { opacity: 1; transform: translateY(0); } }
+
+.logo-container { display: inline-block; margin-bottom: 20px; position: relative; }
+.logo {
+  width: 180px; height: 180px; border-radius: 50%;
+  border: 5px solid #00ffcc;
+  box-shadow: 0 0 30px rgba(0,255,204,0.5), 0 0 60px rgba(0,255,204,0.3);
+  animation: pulse 3s infinite, logoFloat 4s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+.logo:hover { transform: scale(1.05) rotate(3deg); }
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 30px rgba(0,255,204,0.5), 0 0 60px rgba(0,255,204,0.3); }
+  50% { box-shadow: 0 0 40px rgba(0,255,204,0.8), 0 0 80px rgba(0,255,204,0.5); }
+}
+@keyframes logoFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+h1 { font-size: 2.5em; color: #f9d71c; text-shadow: 0 0 20px rgba(249,215,28,0.5); margin: 15px 0; }
+h2 { font-size: 1.3em; color: #00ffcc; font-weight: 300; margin-bottom: 10px; }
+
+/* Content */
+.content {
+  background: rgba(16,37,63,0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  padding: 40px 30px;
+  margin: 30px auto;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  border: 1px solid rgba(0,255,204,0.2);
+  animation: fadeInUp 1s ease 0.8s both;
+}
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+
+.content h3 {
+  color: #f9d71c;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-size: 1.5em;
+}
+.content p, .content li {
+  line-height: 1.8;
+  font-size: 1.05em;
+  color: #e0e0e0;
+  margin-bottom: 15px;
+}
+ul { padding-left: 20px; }
+
+/* Footer */
+footer { text-align: center; padding: 30px 20px; margin-top: 50px; border-top: 1px solid rgba(0,255,204,0.2); color: #aaa; font-size: 0.95em; }
+footer i { color: #f9d71c; margin: 0 5px; }
+/* NAVBAR STYLES */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(10, 22, 40, 0.9);
+  border-bottom: 1px solid rgba(0, 255, 204, 0.2);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  animation: fadeInDown 1s ease;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-size: 1.4em;
+  font-weight: 700;
+  color: #00ffcc;
+  text-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1em;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #00ffcc;
+  text-shadow: 0 0 10px rgba(0, 255, 204, 0.8);
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.8em;
+  color: #00ffcc;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.hamburger:hover {
+  transform: rotate(90deg);
+}
+
+/* MOBILE NAV */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 65px;
+    right: -100%;
+    background: rgba(10, 22, 40, 0.97);
+    width: 200px;
+    height: calc(100vh - 65px);
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding-top: 40px;
+    border-left: 1px solid rgba(0, 255, 204, 0.2);
+    transition: right 0.4s ease;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+}
+
+</style>
+</head>
+<body>
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <i class="fas fa-music"></i> Junoon-e-Mausiqi
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+  
+
+<!-- Floating notes -->
+<div class="music-bg">
+  <div class="note">♪</div><div class="note">♫</div><div class="note">♪</div>
+  <div class="note">♬</div><div class="note">♪</div><div class="note">♫</div>
+  <div class="note">♪</div><div class="note">♬</div><div class="note">♪</div>
+</div>
+
+<div class="container">
+  <header>
+    <div class="logo-container" style="padding-top: 25px;">
+      <img src="profile.png" alt="Vivek Shanti Vishaal" class="logo">
+    </div>
+    <h1>Vivek Shanti Vishaal</h1>
+    <h2>Hindustani Classical Vocalist & Composer</h2>
+  </header>
+
+  <section class="content">
+    <p>
+      Vivek Shanti Vishaal is a young dynamic Hindustani classical vocalist from Prayagraj, groomed under famous Dhrupad maestro Pt. Prem Kumar Mallik of Darbhanga Gharana.  
+      He has many students learning online and offline in India and abroad too.  
+      He is Sangit Praveen, Sangeet Nipun and holds a Master’s in Music from the University of Allahabad.  
+      Vivek, who is a JRF scholar, is also a music composer and is currently pursuing his PhD from the University of Allahabad.
+    </p>
+
+    <p>
+      He is the recipient of the Scholarship Award for Khyal Gayan by the Ministry of Culture (2006–2008) and the state winner of Khyal Gayan (2007), organised by Uttar Pradesh Sangeet Natak Akademi, Lucknow.  
+      He also leads a team of vocalists who sing Kabeerwani in their distinct style.
+    </p>
+
+    <h3>Judgment & Competitions</h3>
+    <ul>
+      <li>NCL Cultural Fest, NCL Ltd. (Madhya Pradesh)</li>
+      <li>Inter-College Youth Fest, Allahabad Degree College, Prayagraj</li>
+      <li>YUVA MAHOTSAV, Sanskriti Vibhag, UP, Khumbh 2019</li>
+      <li>Talent Quest by Rotary Club of Allahabad, 2017</li>
+      <li>Rashtriya Ekal Gaan Pratiyogita, Bharat Vikas Parishad, 2020</li>
+      <li>Sambhagiya Sangeet Pratiyogita, UP Sangeet Natak Akademi, 2015</li>
+      <li>Culrav Fest, MNNIT College, Prayagraj</li>
+      <li>Triveni Mahotsav, 2007</li>
+      <li>Youth Festival 2021, Vikas Bhawan, Prayagraj</li>
+      <li>FM Takda Mic ke Soorma, 2020</li>
+      <li>Talent Search by Allahabad Medical Association</li>
+    </ul>
+
+    <h3>Workshops on Music</h3>
+    <ul>
+      <li>Aarohan Summer Camp, NCL, 2020 (Madhya Pradesh)</li>
+      <li>Allahabad Museum Summer Camp, 2012</li>
+      <li>Voice Culture Workshop, Gonda, UP</li>
+      <li>Workshop at Chandana Sangeet Vidyapeeth, Jabalpur, 2017</li>
+      <li>Chinmay Mission Summer Camp, Prayagraj</li>
+    </ul>
+
+    <h3>Stage Performances</h3>
+    <ul>
+      <li>Sur Ganga, Varanasi</li>
+      <li>Subah-e-Banaras, Varanasi</li>
+      <li>National Programme of Music, Sangeet Sankalp, Jabalpur</li>
+      <li>Ahemdabad Saptah, Saptak School of Music</li>
+      <li>Awadh Sandhya, 2008, Lucknow</li>
+      <li>Music Therapy Concert, Balasore, Odisha</li>
+      <li>Alok Parv, Banaras</li>
+      <li>Bhajan Sandhya, NCZCC, Prayagraj</li>
+      <li>Sirjan – Jashn Sanjhi Virasat Ka, Prayagraj</li>
+      <li>Kahat Kabeer, Rajasthan Kabir Yatra 2023</li>
+      <li>Ramotsav, Ayodhya 2024</li>
+      <li>Gorakhpur Mahotsav 2024</li>
+      <li>Kabeer Amrit Mahotsav, Varanasi</li>
+      <li>Maghar Mahotsav 2024</li>
+    </ul>
+
+    <h3>Contact</h3>
+    <p><strong>Email:</strong> geetsangeet70@gmail.com</p>
+    <p><strong>Phone:</strong> 9335110641, 9453559818</p>
+  </section>
+
+  <footer>
+    <p><i class="fas fa-music"></i> © 2025 Junoon-e-Mausiqi | Dedicated to Classical Excellence <i class="fas fa-music"></i></p>
+  </footer>
+</div>
+<script>
+    // Mobile hamburger toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+  
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      document.body.classList.toggle('menu-open');
+      hamburger.innerHTML = navLinks.classList.contains('active')
+        ? '<i class="fas fa-times"></i>'
+        : '<i class="fas fa-bars"></i>';
+    });
+  </script>
+</body>
+</html>
